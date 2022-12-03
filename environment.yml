@@ -4,4 +4,4 @@ channels:
 dependencies:
   - pip:
     - yaml
-  - streamlit_authenticator
+  - streamlit-authenticator
