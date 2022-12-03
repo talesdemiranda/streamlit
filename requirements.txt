@@ -1,4 +1,4 @@
-yaml
+pyyaml
 streamlit
 streamlit_option_menu
 streamlit-authenticator
