@@ -1,7 +1,6 @@
 import streamlit as st
 st.set_page_config("Projeto Stremlit Tales", layout="wide")
 from streamlit_option_menu import option_menu
-import seguranca.seguranca as seguranca
 import streamlit_authenticator as stauth  # pip install streamlit-authenticator
 import yaml
 
