@@ -2,5 +2,6 @@ name: stats2
 channels:
   - javascript
 dependencies:
-  - pyyaml
-  - streamlit-authenticator
+  - pip:
+    - pyyaml
+    - streamlit_authenticator
