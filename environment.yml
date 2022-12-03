@@ -3,5 +3,5 @@ channels:
   - javascript
 dependencies:
   - pip:
-    - yaml
+    - pyyaml
     - streamlit-authenticator
