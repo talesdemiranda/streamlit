@@ -1,0 +1,3 @@
+dependencies:
+  - yaml==1.18.1
+  - streamlit-authenticator==0.2.1
