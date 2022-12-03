@@ -1,10 +1,27 @@
 import streamlit as st
+st.set_page_config("Projeto Stremlit Tales", layout="wide")
 from streamlit_option_menu import option_menu
 import seguranca.seguranca as seguranca
+import streamlit_authenticator as stauth  # pip install streamlit-authenticator
+import yaml
 
-st.set_page_config("Projeto Stremlit Tales", layout="wide")
+#reference https://github.com/mkhorasani/Streamlit-Authenticator
+with open('./seguranca/config.yaml') as file:
+    config = yaml.load(file, Loader=yaml.SafeLoader)
 
-if seguranca.check_password():
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['preauthorized']
+)
+
+name, authentication_status, username = authenticator.login('Login', 'main')
+
+if authentication_status:
+
+#if seguranca.check_password():
 
 	menu_esquerdo              = ["Cadastro", "Adesão", "Arrecadação", "Instituto", "Configuração"]
 	menu_esquerdo_icone        = ['people-fill', 'card-list', 'cash-coin', 'bounding-box', 'gear']
@@ -20,3 +37,5 @@ if seguranca.check_password():
 													menu_icon="eyeglasses",
 													default_index=0
 									)
+
+		authenticator.logout('Sair', 'main')
