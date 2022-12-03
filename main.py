@@ -1,8 +1,8 @@
 import streamlit as st
 st.set_page_config("Projeto Stremlit Tales", layout="wide")
 from streamlit_option_menu import option_menu
-import streamlit_authenticator as stauth  # pip install streamlit-authenticator
 import yaml
+import streamlit_authenticator as stauth  # pip install streamlit-authenticator
 
 #reference https://github.com/mkhorasani/Streamlit-Authenticator
 #			  https://discuss.streamlit.io/t/new-component-streamlit-authenticator-a-secure-authenticaton-module-to-validate-user-credentials-in-a-streamlit-application/18893
