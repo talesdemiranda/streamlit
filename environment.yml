@@ -1,6 +1,4 @@
 name: stats2
-channels:
-  - javascript
 dependencies:
   - pip:
     - pyyaml
