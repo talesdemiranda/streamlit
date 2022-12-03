@@ -3,6 +3,49 @@ st.set_page_config("Projeto Stremlit Tales", layout="wide")
 from streamlit_option_menu import option_menu
 import yaml
 import streamlit_authenticator as stauth  # pip install streamlit-authenticator
+import os
+# requirements.txt https://docs.streamlit.io/streamlit-cloud/get-started/deploy-an-app/app-dependencies#add-python-dependencies
+
+import base64
+
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: url("./img/blue_abstract_background.jpg")
+    }
+   .sidebar .sidebar-content {
+        background: url("/img/blue_abstract_background.jpg")
+    }
+	 .css-ffhzg2 {
+        background: url("/img/blue_abstract_background.jpg")
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+@st.cache(allow_output_mutation=True)
+def get_base64_of_bin_file(bin_file):
+    with open(bin_file, 'rb') as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
+
+def set_png_as_page_bg(png_file):
+    bin_str = get_base64_of_bin_file(png_file)
+    page_bg_img = '''
+    <style>
+    body {
+    background-image: url("data:image/png;base64,%s");
+    background-size: cover;
+    }
+    </style>
+    ''' % bin_str
+    
+    st.markdown(page_bg_img, unsafe_allow_html=True)
+    return
+
+set_png_as_page_bg(f'{os.path.dirname(os.path.realpath(__file__))}/img/blue_abstract_background.jpg')
 
 #reference https://github.com/mkhorasani/Streamlit-Authenticator
 #			  https://discuss.streamlit.io/t/new-component-streamlit-authenticator-a-secure-authenticaton-module-to-validate-user-credentials-in-a-streamlit-application/18893
