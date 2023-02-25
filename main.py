@@ -1,5 +1,7 @@
 import streamlit as st
 st.set_page_config("Projeto Stremlit Tales", layout="wide")
+state = st.session_state
+
 from streamlit_option_menu import option_menu
 import yaml
 import streamlit_authenticator as stauth  # pip install streamlit-authenticator
@@ -11,15 +13,13 @@ import base64
 st.markdown(
     """
     <style>
-    .reportview-container {
+	 .css-ffhzg2 {
         background: url("./img/blue_abstract_background.jpg")
     }
-   .sidebar .sidebar-content {
-        background: url("/img/blue_abstract_background.jpg")
-    }
-	 .css-ffhzg2 {
-        background: url("/img/blue_abstract_background.jpg")
-    }
+	 .css-6qob1r {
+			
+			background: lightblue	
+	 }
     </style>
     """,
     unsafe_allow_html=True
@@ -39,6 +39,7 @@ def set_png_as_page_bg(png_file):
     background-image: url("data:image/png;base64,%s");
     background-size: cover;
     }
+
     </style>
     ''' % bin_str
     
@@ -49,7 +50,8 @@ set_png_as_page_bg(f'{os.path.dirname(os.path.realpath(__file__))}/img/blue_abst
 
 #reference https://github.com/mkhorasani/Streamlit-Authenticator
 #			  https://discuss.streamlit.io/t/new-component-streamlit-authenticator-a-secure-authenticaton-module-to-validate-user-credentials-in-a-streamlit-application/18893
-with open('./seguranca/config.yaml') as file:
+#with open('./seguranca/config.yaml') as file: #Remoto
+with open(os.path.dirname(os.path.realpath(__file__))+'\seguranca\config.yaml') as file: #Remoto
     config = yaml.load(file, Loader=yaml.SafeLoader)
 
 authenticator = stauth.Authenticate(
